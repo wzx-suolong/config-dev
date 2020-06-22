@@ -1,1 +1,18 @@
-﻿
+﻿server:
+  port: 8088
+
+spring:
+  profiles:
+    active:
+    -dev     #读取resources下的properties
+---
+spring:
+  profiles: dev
+  application:
+    name: config-dev
+
+---
+spring:
+  profiles: test
+  application:
+    name: config-dev
