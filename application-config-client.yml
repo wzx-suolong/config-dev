@@ -1,0 +1,55 @@
+﻿spring:
+  profiles:
+    active:
+    -dev     #读取resources下的properties
+
+---
+server:
+port: 8089
+
+spring:
+  application:
+    #应用名称
+    name: config-client
+  cloud:
+    config:
+      #指明使用的环境，测试、开发、生产（正式）
+      profile: dev
+      discovery:
+        #从配置中心读取文件，默认是false
+        enabled: true
+        #配置中心的servieId，即服务名
+        service-id: config-server
+      label: master
+
+eureka:
+  client:
+    service-url:
+      #eureka服务地址
+      defaultZone: http://localhost:8080/eureka
+
+
+---
+server:
+port: 8087
+
+spring:
+  application:
+    #应用名称
+    name: config-client
+  cloud:
+    config:
+      #指明使用的环境，测试、开发、生产（正式）
+      profile: test
+      discovery:
+        #从配置中心读取文件，默认是false
+        enabled: true
+        #配置中心的servieId，即服务名
+        service-id: config-server
+      label: master
+
+eureka:
+  client:
+    service-url:
+      #eureka服务地址
+      defaultZone: http://localhost:8080/eureka
